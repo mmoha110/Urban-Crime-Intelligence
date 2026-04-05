@@ -25,11 +25,52 @@ LAT_MIN, LAT_MAX = 41.6, 42.1
 LON_MIN, LON_MAX = -87.95, -87.5
 
 
+def _normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Normalize column names to Title Case with spaces.
+    The Socrata API returns lowercase snake_case headers
+    (e.g. 'arrest', 'primary_type', 'location_description'),
+    while manual CSV exports use Title Case with spaces
+    (e.g. 'Arrest', 'Primary Type', 'Location Description').
+    This function maps both forms to the Title Case variant.
+    """
+    rename_map = {
+        # Socrata API names → canonical names
+        "id":                    "ID",
+        "case_number":           "Case Number",
+        "date":                  "Date",
+        "block":                 "Block",
+        "iucr":                  "IUCR",
+        "primary_type":          "Primary Type",
+        "description":           "Description",
+        "location_description":  "Location Description",
+        "arrest":                "Arrest",
+        "domestic":              "Domestic",
+        "beat":                  "Beat",
+        "district":              "District",
+        "ward":                  "Ward",
+        "community_area":        "Community Area",
+        "fbi_code":              "FBI Code",
+        "x_coordinate":          "X Coordinate",
+        "y_coordinate":          "Y Coordinate",
+        "year":                  "Year",
+        "updated_on":            "Updated On",
+        "latitude":              "Latitude",
+        "longitude":             "Longitude",
+        "location":              "Location",
+    }
+    # Only rename columns that are actually present
+    df = df.rename(columns={k: v for k, v in rename_map.items() if k in df.columns})
+    return df
+
+
 def load_raw(path: str = "data/raw/chicago_crimes.csv") -> pd.DataFrame:
     """Load raw CSV from disk."""
     print(f"Loading raw data from {path}...")
     df = pd.read_csv(path, low_memory=False)
+    df = _normalize_columns(df)
     print(f"  Shape: {df.shape}")
+    print(f"  Columns: {list(df.columns)}")
     return df
 
 
