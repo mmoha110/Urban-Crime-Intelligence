@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+venv/
+env/
+.env
+*.egg-info/
+dist/
+build/
+
+# Data files (large — download locally)
+data/raw/
+data/processed/
+data/samples/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Model artifacts (large binary files)
+outputs/models/*.joblib
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
