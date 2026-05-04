@@ -142,16 +142,4 @@ CSV/MD exports: `classification_results.csv`, `cv_results.csv`, `clustering_comp
 
 ## Authors
 
-Tejaswi Tiyyagura, Sanjith Jayasankar, Srinath Ganesh, Muneeb Mohammed (Northeastern CS-483).
-
-## Repository hygiene
-
-Course deliverables (final papers, slide decks, presentation scripts) are maintained **locally** by the team and excluded via `.gitignore`. If you previously committed any of those paths, stop tracking them without deleting your working copy:
-
-```bash
-git rm --cached reports/CS483_Final_Report.md reports/final_report.md reports/presentation_script.md reports/slides_outline.md outputs/reports/progress_report.md
-git rm --cached reports/*.pdf reports/*.pptx 2>/dev/null || true
-git commit -m "Stop tracking local course write-ups"
-```
-
-Then verify with `git status` before pushing.
+Tejaswi Tiyyagura, Sanjith Jayasankar, Srinath Ganesh, Muneeb Mohammed.
