@@ -1,0 +1,3 @@
+method,k,silhouette,davies_bouldin,n_clusters,noise_points,noise_pct
+KMeans,10.0,0.41345475920544006,0.7729175104656113,10,0,0.0
+DBSCAN,,0.4968447386453477,,2,6,0.012015379685998077
